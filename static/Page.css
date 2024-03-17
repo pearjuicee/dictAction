@@ -1,0 +1,188 @@
+h1 {
+    font-family: DotGothic16;;
+    color: #5b99d3; 
+    font-size: 38px; 
+    text-align: center; 
+}
+
+header {
+    width: 100%;
+    height: 53px;
+    flex-shrink: 0;
+    top: 0; /* Position the navbar at the top of the page */
+    background: #fffac9;
+}
+
+.p1{
+    color: black;
+    text-indent: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    word-wrap: break-word;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: left; 
+    padding: 15px;
+}
+
+.right{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 50px;
+}
+
+div.indent{
+    text-indent: 40px;
+    font-size: 20px;
+}
+
+.logo img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+}
+
+body {
+    color: black;
+    font-size: 22px;
+    font-weight: 400;
+    word-wrap: break-word;
+    font-family: DotGothic16;
+}
+
+.title {
+    color: #c33535; /* Custom color */
+    font-size: 32px; /* Custom font size */
+    text-align: center; /* Center alignment */
+}
+
+li {
+    display: inline;
+}
+
+
+.text {
+    color: black;
+    font-size: 22px;
+    font-weight: 400;
+    word-wrap: break-word;
+    font-family: Inter;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    width: calc(50% - 10px);
+}
+  
+.column + .column {
+    margin-left: 20px; /* Adjust as needed */
+  }
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.row {
+    display: flex;
+}
+  
+.column {
+    flex: 50%;
+}
+/* buttons~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.button {
+    background-color: #B1EBA2;
+    color: #000000;
+    padding: 10px;
+    gap: 10px;
+    border: none;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: DotGothic16;
+}
+
+.button:hover {
+    background-color: #73d75a;
+}
+
+.button-link {
+    text-decoration: none; /* Remove underline from the link */
+}
+
+.button2 {
+    color: black;
+    font-family: DotGothic16;
+    font-size: 15px;
+    font-weight: 400;
+    word-wrap: break-word;
+    padding: 8px;
+    gap: 10px;
+    border: 1px black solid;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button2:hover {
+    background-color: #96e782;
+    color: #000000;
+}
+
+.button2-link {
+    text-decoration: none; /* Remove underline from the link */
+}
+
+.button3 {
+    background-color: #B1EBA2;
+    color: #000000;
+    padding: 10px;
+    gap: 10px;
+    border: 1px black solid;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: DotGothic16;
+    margin-right: 40px;
+}
+
+.button3:hover {
+    background-color: #d75a5a;
+}
+
+.button3-link {
+    text-decoration: none; /* Remove underline from the link */
+}
+
+
+.buttonbig {
+    font-size: 22px;
+    background-color: #B1EBA2;
+    color: #000000;
+    padding: 10px;
+    gap: 10px;
+    border: none;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: DotGothic16;
+}
+
+.buttonbig:hover {
+    background-color: #73d75a;
+}
+
+.buttonbig-link {
+    text-decoration: none; /* Remove underline from the link */
+}
+
+.texterror {
+    color: #FF5733;
+}
