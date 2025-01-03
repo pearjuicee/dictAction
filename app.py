@@ -59,7 +59,17 @@ def process_text():
 
 @app.route('/input')
 def input():
-    return render_template('UserInput.html')
+    """try: 
+        dictation_text = display_correct_text()
+     
+    except Exception as e:
+        error_message = f"Error displaying results: {str(e)}"
+        print(error_message)
+        return error_message, 500"""
+    
+    sample_text = "hi i am a computer science student"
+    
+    return render_template('UserInput.html', text=sample_text)
 
 @app.route('/correct', methods=['POST'])
 def correct():

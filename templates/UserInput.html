@@ -17,27 +17,41 @@
     </header>
     <br>
     <br>
-    <script>
-        window.onload = (event) => {
-        console.log("Hello World1")
-        var buttonNormal = document.getElementById("buttonNormal")
-        var msg = document.getElementById("normalMsg")
-        newMsg = msg.value;
-        buttonNormal.addEventListener('click', function() { 
-            const message = new SpeechSynthesisUtterance();
-            console.log(newMsg)
-            message.text = newMsg;
-            const speechSynthesis = window.speechSynthesis;
-            speechSynthesis.speak(message)})
-        }
-
-    </script>
     <div class="indent">
         Choose speed:
             <input id="normalMsg" type="hidden" name="message" value="{{ message }}">
             <button id="buttonSlow"  type= "submit" name="button" value="slow" button class="button2">Slow</button>
-            <button id="buttonNormal"type= "submit" name="button" value="normal" class="button2">Normal</button>
+            <button id="buttonNormal" type= "submit" name="button" value="normal" class="button2">Normal</button>
             <button id="buttonFast" type= "submit" name="button" value="fast" button class="button2">Fast</button>
+            <script>
+                // Pass the dynamic text as a JavaScript variable
+                const text = "{{text}}";
+        
+                // Select the button
+                const speakButtonSlow = document.getElementById('buttonSlow');
+                const speakButtonNormal = document.getElementById('buttonNormal');
+                const speakButtonFast = document.getElementById('buttonFast');
+        
+                function speak(rate) {
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.pitch = 1.0; // Standard pitch
+                    utterance.rate = rate; // Variable rate
+                    utterance.lang = 'en-US'; // Language
+                    speechSynthesis.speak(utterance);
+                }
+
+                buttonNormal.addEventListener('click', () => {
+                    speak(0.7); // Normal speed
+                });
+
+                buttonSlow.addEventListener('click', () => {
+                    speak(0.1); // Slow speed
+                });
+
+                buttonFast.addEventListener('click', () => {
+                    speak(2.0); // Slow speed
+                });
+            </script>
     <br>
     <div class="indent">
         Start writing:
