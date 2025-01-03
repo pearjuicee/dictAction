@@ -20,11 +20,6 @@
         <div class="column">
             Corrections
             <div class="text" name="err_count" style="background-color:#e5e5e5;">
-                {% for word in corrected_version%}
-                    <p class={{word.color}}>
-                        {{word.text}}
-                    </p>
-                {% endfor %}
             </div>
         </div>
         <div class="column">
@@ -32,13 +27,12 @@
             <br>
             <br>
             <div class="text" name="word_count" style="background-color:#e5e5e5;">
-                {{message}}
+                {{text}}
             </div>
         </div>
-      </div>
+    </div>
     <form action="/grading" method="POST">
         <div class="indent">
-            Mark: {{((word_count-err_count)/word_count * 100)}}%
         </div>
     </form>
     <div class="right">

@@ -43,21 +43,20 @@
         Start writing:
     </div>
     <div class="indent">
+        <div class="right">
+                <a href="/result" class="button-link">
+                    <input type="hidden" name="message" value="{{ message }}">
+                    <button name="button" class="button3" value="paper">I wrote my dictation on paper</button>
+                </a>
+        </div>
         <form action="/correct" method="POST">
-            <textarea name="textarea" rows="20" cols="150" required></textarea> 
+            <textarea name="userAnswer" rows="20" cols="150"></textarea> 
             <br>
             <br>
             <div class="right">
-                <a href="ResultPage" class="button-link">
-                    <input type="hidden" name="message" value="{{ message }}">
-                    <button type="submit" name="button" class="button3" value="paper">I wrote my dictation on paper</button>
-                </a>
-                <a href="CorrectionResult" class="button-link">
-                    <input type="hidden" name="message" value="{{ message }}">
-                    <button type="submit" name="button" class="button3" value="grade">Grade</button>
-                </a>
+                <input type="hidden" name="message" value="{{ message }}">
+                <button type="submit" name="button" class="button3" value="grade">Grade</button>
             </div>
-            
         </form>
     </div>
     
