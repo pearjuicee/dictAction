@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Type</title>
+    <link rel="stylesheet" href="../static/ChooseType.css">
+    <link href='https://fonts.googleapis.com/css?family=DotGothic16' rel='stylesheet'>
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="p1">
+            DictAction
+        </div>        
+    </header>
+
+    <div class="container">
+        <div class="leftSelect">
+        <a href="Beginner" class="btn">Beginner</a>
+        <a href="Intermediate" class="btn">Intermediate</a>
+        <a href="Intermediate-Advanced" class="btn">Intermediate-Advanced</a>
+        <a href="Advanced" class="btn">Advanced</a>
+        </div>
+    
+        <div class="selfwrite">
+        <p>
+            Use your own text:
+        </p>
+        <script>
+
+        </script>
+        <form action="/process" method="get">
+            <textarea name="message" rows="20" cols="70" required></textarea> 
+            <br>
+            <a href="UserInput" class="button-link">
+                <button type="submit" class="button">Start!</button>
+            </a>
+        </form>
+        </div>
+
+    </div>
+    
+
+</body>
+
+</html>

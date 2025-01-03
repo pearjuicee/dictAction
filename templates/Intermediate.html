@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result without input</title>
+    <link rel="stylesheet" href="../static/Page.css">
+    <link href='https://fonts.googleapis.com/css?family=DotGothic16' rel='stylesheet'>
+</head>
+
+<body>
+    <header>
+        <div class="p1">
+            DictAction
+        </div>
+    </header>
+    <br>
+    <div class="row">
+        <div class="column">
+            Correct text
+            <form id="answer" action="/answerkey" method="POST">
+                <div class="text" style="background-color:#e5e5e5;"> 
+                    {{message}}
+                </div>
+            </form>
+
+        </div>
+      </div>
+    <br>
+    <div class="right">
+        <a href="ChooseType" class="button-link">
+            <button class="button">New Dictation</button>
+        </a>
+    </div>
+</body>
+</html>

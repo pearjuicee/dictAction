@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DictAction</title>
+    <link rel="stylesheet" href="../static/Page.css">
+    <link href='https://fonts.googleapis.com/css?family=DotGothic16' rel='stylesheet'>
+</head>
+
+<body>
+    <header>
+        <div class="p1">
+            DictAction
+        </div>
+    </header>
+    <br>
+    <br>
+    <script>
+        window.onload = (event) => {
+        console.log("Hello World1")
+        var buttonNormal = document.getElementById("buttonNormal")
+        var msg = document.getElementById("normalMsg")
+        newMsg = msg.value;
+        buttonNormal.addEventListener('click', function() { 
+            const message = new SpeechSynthesisUtterance();
+            console.log(newMsg)
+            message.text = newMsg;
+            const speechSynthesis = window.speechSynthesis;
+            speechSynthesis.speak(message)})
+        }
+
+    </script>
+    <div class="indent">
+        Choose speed:
+            <input id="normalMsg" type="hidden" name="message" value="{{ message }}">
+            <button id="buttonSlow"  type= "submit" name="button" value="slow" button class="button2">Slow</button>
+            <button id="buttonNormal"type= "submit" name="button" value="normal" class="button2">Normal</button>
+            <button id="buttonFast" type= "submit" name="button" value="fast" button class="button2">Fast</button>
+    <br>
+    <div class="indent">
+        Start writing:
+    </div>
+    <div class="indent">
+        <form action="/correct" method="POST">
+            <textarea name="textarea" rows="20" cols="150" required></textarea> 
+            <br>
+            <br>
+            <div class="right">
+                <a href="ResultPage" class="button-link">
+                    <input type="hidden" name="message" value="{{ message }}">
+                    <button type="submit" name="button" class="button3" value="paper">I wrote my dictation on paper</button>
+                </a>
+                <a href="CorrectionResult" class="button-link">
+                    <input type="hidden" name="message" value="{{ message }}">
+                    <button type="submit" name="button" class="button3" value="grade">Grade</button>
+                </a>
+            </div>
+            
+        </form>
+    </div>
+    
+    
+</body>
+</html>
