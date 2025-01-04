@@ -4,6 +4,62 @@ from datetime import datetime
 
 app = Flask(__name__)
 
+def normalize_text(text):
+    words = text.strip().split()
+    return words
+
+def calculate_grade(original_text, student_answer):
+    original_words = normalize_text(original_text)
+    student_words = normalize_text(student_answer)
+
+    total_words = len(original_words)
+    marked_words = []
+    correct_count = 0
+    error_words = []
+
+    max_length = max(len(original_words), len(student_words))
+
+    for i in range(max_length):
+        if i < len(original_words) and i < len(student_words):
+            orig_curr = original_words[i]
+            student_curr = student_words[i]
+
+            if orig_curr == student_curr:
+                marked_words.append({
+                    "word": student_curr,
+                    "status": "correct",
+                    "color": "black"
+                })
+                correct_count += 1
+            else:
+                marked_words.append({
+                    "word": student_curr,
+                    "status": "incorrect",
+                    "correct_word": orig_curr,
+                    "color": "red"
+                })
+        elif i < len(original_words):
+            marked_words.append({
+                "word": "___",
+                "status": "missing",
+                "correct_word": original_words[i],
+                "color": "red"
+
+            })
+
+        else:
+            marked_words.append({
+                "word": student_words[i],
+                "status": "extra",
+                "correct_word": None,
+                "color": "red"
+            })
+    score_fraction = f"{correct_count}/{total_words}"
+    percentage = int((correct_count / total_words) * 100)
+
+    return marked_words, score_fraction, percentage
+
+
 # Define the directory where we'll store dictation files
 COLLECTION_DIRECTORY = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'dict_collection')
 os.makedirs(COLLECTION_DIRECTORY, exist_ok=True)
@@ -22,6 +78,18 @@ def display_correct_text():
     return dictation_text
 
             
+"""@app.route('/Beginner')
+def beginner():
+    return render_template('Beginner.html')
+
+@app.route('/random_dictation', methods=['POST'])
+def random_dictation(): 
+    # Choose a random dictation 
+    try:
+        dictation_key = random.choice(list(DICTATIONS['beginner'].keys()))
+        filep
+ACID = ht"""
+        
 
 @app.route('/')
 def index():
@@ -59,7 +127,15 @@ def process_text():
 
 @app.route('/input')
 def input():
-    return render_template('UserInput.html')
+    try: 
+        dictation_text = display_correct_text()
+     
+    except Exception as e:
+        error_message = f"Error displaying results: {str(e)}"
+        print(error_message)
+        return error_message, 500
+    
+    return render_template('UserInput.html', text=dictation_text)
 
 @app.route('/correct', methods=['POST'])
 def correct():
@@ -92,11 +168,25 @@ def correct():
 @app.route('/grading')
 def grading():
     try: 
-        dictation_text = display_correct_text()
-        return render_template('CorrectionResult.html', text=dictation_text)
+        # Read original dictation text
+        with open(os.path.join(COLLECTION_DIRECTORY, 'user_dictation.txt'), 'r', encoding='utf-8') as file:
+            original_text = file.read()
+        
+        # Read student's answer
+        with open(os.path.join(COLLECTION_DIRECTORY, 'answer.txt'), 'r', encoding='utf-8') as file:
+            student_answer = file.read()
+        
+        # Calculate grade and get marked words with detailed feedback
+        marked_words, score_fraction, percentage = calculate_grade(original_text, student_answer)
+        
+        return render_template('CorrectionResult.html',
+                             original_text=original_text,
+                             marked_words=marked_words,
+                             score_fraction=score_fraction,
+                             percentage=percentage)
      
     except Exception as e:
-        error_message = f"Error displaying results: {str(e)}"
+        error_message = f"Error during grading: {str(e)}"
         print(error_message)
         return error_message, 500
     
